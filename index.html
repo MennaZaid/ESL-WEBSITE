@@ -1,20 +1,281 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/global.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+
+  <!-- Bootstrap (for layout only) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/global.css" />
 </head>
+
 <body>
-    <header>
-        <nav id="main-nav">
-          <ul>
-            <li><a href="index.html" style="color: var(--color-text-muted);">Home</a></li>
-            <li><a href="agenda.html">Agenda</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg" id="main-nav">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">ESL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+          aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="agenda.html" class="nav-link">Agenda</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
-        </nav>
-      </header>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <section class="start-section text-center text-sm-start">
+    <div class="container m-2 p-3">
+      <div class="d-sm-flex align-items-center justify-content-between p-3">
+        <div class="m-2">
+          <h1>WELCOME TO <span class="highlight">ESL 2025</span></h1>
+          <p class="lead my-5">
+            The <strong>Egyptian Student Leaders Conference (ESL)</strong> brings together student
+            government/associations leaders from universities across Egypt to learn ideas, build
+            leadership capacity, and develop joint initiatives together from experienced individuals.
+            Through talks, collaboration, networking, and policy innovation, ESG aims to strengthen
+            student representation, promote cross-campus cooperation, and inspire impactful
+            leadership across the country.
+          </p>
+          <button class="btn btn-primary-custom btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal">
+            REGISTER NOW
+          </button>
+        </div>
+        <img class="img-fluid w-50 m-2 d-none d-sm-block" src="images/esl.png" alt="ESL Conference" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Join ESL 2025</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="registrationForm" method="POST" action="/api/register">
+            <div class="row g-3">
+
+              <!-- First & Last Name -->
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="first_name"
+                  placeholder="Enter your first name" required>
+              </div>
+
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="last_name"
+                  placeholder="Enter your last name" required>
+              </div>
+
+              <!-- Age -->
+              <div class="col-md-4">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-8">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                  required>
+              </div>
+
+              <!-- Phone -->
+              <div class="col-md-6">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"
+                  required>
+              </div>
+
+              <!-- City Dropdown -->
+              <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <select class="form-select text-dark" id="city" name="city" required>
+                  <option value="" disabled selected>Select your city</option>
+                  <option value="Cairo">Cairo</option>
+                  <option value="Giza">Giza</option>
+                  <option value="Alexandria">Alexandria</option>
+                  <option value="Port Said">Port Said</option>
+                  <option value="Suez">Suez</option>
+                  <option value="Luxor">Luxor</option>
+                  <option value="Aswan">Aswan</option>
+                  <option value="Ismailia">Ismailia</option>
+                  <option value="Tanta">Tanta</option>
+                  <option value="Faiyum">Faiyum</option>
+                  <option value="Zagazig">Zagazig</option>
+                  <option value="Mansoura">Mansoura</option>
+                  <option value="Damanhur">Damanhur</option>
+                  <option value="Beni Suef">Beni Suef</option>
+                  <option value="Minya">Minya</option>
+                  <option value="Assiut">Assiut</option>
+                  <option value="Sohag">Sohag</option>
+                  <option value="Qena">Qena</option>
+                  <option value="Hurghada">Hurghada</option>
+                  <option value="Sharm El Sheikh">Sharm El Sheikh</option>
+                  <option value="Damietta">Damietta</option>
+                  <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                  <option value="Arish">Arish</option>
+                  <option value="Banha">Banha</option>
+                  <option value="Mahalla">Mahalla</option>
+                  <option value="New Valley">New Valley</option>
+                  <option value="Marsa Matruh">Marsa Matruh</option>
+                  <option value="Beheira">Beheira</option>
+                  <option value="North Sinai">North Sinai</option>
+                  <option value="South Sinai">South Sinai</option>
+                  <option value="Qalyubia">Qalyubia</option>
+                  <option value="Sharqia">Sharqia</option>
+                  <option value="Monufia">Monufia</option>
+                  <option value="Red Sea">Red Sea</option>
+                  <option value="Dakahlia">Dakahlia</option>
+                </select>
+              </div>
+
+              <!-- University -->
+              <div class="col-md-6">
+                <label for="university" class="form-label">University</label>
+                <input type="text" class="form-control" id="university" name="university"
+                  placeholder="Your university name" required>
+              </div>
+
+              <!-- Organization -->
+              <div class="col-md-6">
+                <label for="organization" class="form-label">Name of Organization</label>
+                <input type="text" class="form-control" id="organization" name="organization"
+                  placeholder="Organization name or 'Individual'" required>
+              </div>
+
+              <!-- Role -->
+              <div class="col-md-6">
+                <label for="role" class="form-label">Role</label>
+                <input type="text" class="form-control" id="role" name="role" placeholder="Enter your role" required>
+              </div>
+
+              <!-- Transportation Section (hidden until needed) -->
+              <div id="transportSection" style="display:none;">
+                <div class="col-12 mt-3">
+                  <label class="form-label d-block">Will you be needing transportation?</label>
+                  <div class="form-check form-check-inline">
+                    <!-- <input class="form-check-input" type="radio" name="need_transport" id="transportYes" value="yes"> -->
+                    <label class="form-check-label" for="transportYes">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <!-- <input class="form-check-input" type="radio" name="need_transport" id="transportNo" value="no"> -->
+                    <label class="form-check-label" for="transportNo">No</label>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-3" id="transportLocationDiv" style="display:none;">
+                  <label for="transportLocation" class="form-label">From where will you be needing
+                    transportation?</label>
+                  <input type="text" class="form-control" id="transportLocation" name="transport_from"
+                    placeholder="Enter location">
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary-custom w-100">Submit Registration</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <section class="info-section">
+    <div class="container text-center">
+      <h2 class="section-title text-dark">Why Join ESL?</h2>
+      <div class="row g-4">
+        <div class="col-md">
+          <div class="card-custom">
+            <div class="card-body">
+              <h3 class="card-title mb-3">Networking</h3>
+              <p>Connect with student leaders from across Egypt and build valuable collaborations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card-custom">
+            <div class="card-body">
+              <h3 class="card-title mb-3">Leadership Skills</h3>
+              <p>Develop your leadership and teamwork abilities through interactive workshops.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card-custom">
+            <div class="card-body">
+              <h3 class="card-title mb-3">Recognition</h3>
+              <p>Receive official certificates signed by guest speakers upon completing the conference.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About ESL -->
+  <section class="event-section">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md p-5">
+          <h2>About ESL 2025</h2>
+          <p class="lead">
+            ESL 2025 will take place on <strong>November 21st, 2025</strong> at the
+            <em>American University in Cairo</em>. Join hundreds of student leaders and changemakers for a day of
+            collaboration, workshops, and impactful sessions.
+          </p>
+          <a href="#contact" class="btn btn-secondary-custom mt-3">Contact Organizers</a>
+        </div>
+        <div class="col-md">
+          <img src="images/esl_event.png" alt="Conference" class="img-fluid rounded-3 shadow-lg" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="contact-section" id="contact">
+    <div class="container text-center text-dark">
+      <h2 class="section-title">Contact Information</h2>
+      <ul class="list-unstyled">
+        <li><strong>Emails:</strong> alyaaeldeeb@aucegypt.edu / mahmoudkhedr@aucegypt.edu</li>
+        <li><strong>Phone Numbers:</strong> 01200300325 / 01200766680</li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/auc.su" target="_blank">@auc.su</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section text-center">
+    <div class="container">
+      <p>© 2025 Egyptian Student Leaders Conference</p>
+      <a href="#" class="scroll-top"><i class="bi bi-arrow-up-circle h1"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
