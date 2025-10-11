@@ -15,20 +15,20 @@
 
   <!-- Global Styles -->
   <link rel="stylesheet" href="css/global.css" />
-  
+
   <!-- FAQ-specific styles -->
   <style>
     .faq-section {
       padding: 80px 0;
       background-color: var(--color-background);
     }
-    
+
     .faq-title {
       color: var(--color-primary);
       margin-bottom: 50px;
       font-weight: 700;
     }
-    
+
     .faq-item {
       border: none;
       border-radius: 10px;
@@ -36,7 +36,7 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
-    
+
     .faq-header {
       background-color: white;
       border: none;
@@ -44,11 +44,11 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
+
     .faq-header:hover {
       background-color: #f8f9fa;
     }
-    
+
     .faq-header h3 {
       margin: 0;
       font-size: 1.2rem;
@@ -58,22 +58,22 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .faq-answer {
       padding: 20px;
       background-color: white;
       border-top: 1px solid #e9ecef;
     }
-    
+
     .faq-icon {
       transition: transform 0.3s ease;
       color: var(--color-primary);
     }
-    
+
     .faq-header[aria-expanded="true"] .faq-icon {
       transform: rotate(180deg);
     }
-    
+
     .back-home {
       margin-top: 40px;
     }
@@ -95,7 +95,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="agenda.html" class="nav-link">Agenda</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link active">FAQ</a></li>
           </ul>
@@ -108,84 +108,97 @@
   <section class="faq-section">
     <div class="container">
       <h2 class="text-center faq-title">FAQs</h2>
-      
+
       <div class="accordion" id="faqAccordion">
         <!-- Question 1 -->
         <div class="accordion-item faq-item">
           <h2 class="accordion-header faq-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
               <span>Will there be transportation?</span>
               <i class="faq-icon bi bi-chevron-down"></i>
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#faqAccordion">
             <div class="accordion-body faq-answer">
               <p>Yes, students located outside of Cairo will be accommodated with transportation.</p>
             </div>
           </div>
         </div>
-        
+
         <!-- Question 2 -->
         <div class="accordion-item faq-item">
           <h2 class="accordion-header faq-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               <span>Will the certificate be hard or soft copy?</span>
               <i class="faq-icon bi bi-chevron-down"></i>
             </button>
           </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#faqAccordion">
             <div class="accordion-body faq-answer">
               <p>All certificates will be sent as a soft copy through email.</p>
             </div>
           </div>
         </div>
-        
+
         <!-- Question 3 -->
         <div class="accordion-item faq-item">
           <h2 class="accordion-header faq-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
               <span>Can I join the conference if I am not in the student union or in any association?</span>
               <i class="faq-icon bi bi-chevron-down"></i>
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#faqAccordion">
             <div class="accordion-body faq-answer">
               <p>Yes, all university students are welcome to join the conference.</p>
             </div>
           </div>
         </div>
-        
+
         <!-- Question 4 -->
         <div class="accordion-item faq-item">
           <h2 class="accordion-header faq-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
               <span>What will I benefit from this conference?</span>
               <i class="faq-icon bi bi-chevron-down"></i>
             </button>
           </h2>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+            data-bs-parent="#faqAccordion">
             <div class="accordion-body faq-answer">
-              <p>Students will benefit by gaining practical skills through workshops, receiving guidance from professionals, expanding your network with students from other universities, and earning a certificate from AUC that adds value to your academic and career journey.</p>
+              <p>Students will benefit by gaining practical skills through workshops, receiving guidance from
+                professionals, expanding your network with students from other universities, and earning a certificate
+                from AUC that adds value to your academic and career journey.</p>
             </div>
           </div>
         </div>
-        
+
         <!-- Question 5 -->
         <div class="accordion-item faq-item">
           <h2 class="accordion-header faq-header" id="headingFive">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
               <span>Do I have to register for the workshops / talks?</span>
               <i class="faq-icon bi bi-chevron-down"></i>
             </button>
           </h2>
-          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+            data-bs-parent="#faqAccordion">
             <div class="accordion-body faq-answer">
-              <p>No, you have to register only for the events and throughout the day you can choose the workshops and talks you will attend.</p>
+              <p>No, you have to register only for the events and throughout the day you can choose the workshops and
+                talks you will attend.</p>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="text-center back-home">
         <a href="index.html" class="btn btn-primary-custom">Back to Home</a>
       </div>
@@ -202,5 +215,12 @@
 
   <script src="script.js"></script>
 </body>
+<!-- Footer -->
+<footer class="footer-section text-center">
+  <div class="container">
+    <p>© 2025 Egyptian Student Leaders Conference</p>
+    <a href="#" class="scroll-top"><i class="bi bi-arrow-up-circle h1"></i></a>
+  </div>
+</footer>
 
 </html>
