@@ -24,6 +24,36 @@
   --border-radius: 12px;
 }
 
+/* Form field styles (applies to inputs & textareas) */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border-radius: var(--border-radius);
+  padding: 0.6rem 0.75rem;
+  transition: all var(--transition-medium);
+  text-decoration: var(--color-text-muted);
+}
+
+/* Placeholder text color */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+/* Focus effect */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(0, 134, 243, 0.3);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -440,4 +470,33 @@ body {
 ::selection {
   background-color: var(--color-text-muted);
   color: white;
+}
+
+/* Force visible text and consistent colors in form fields */
+form input,
+form textarea {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-text-muted) !important;
+  border-radius: var(--border-radius);
+  padding: 0.6rem 0.75rem;
+  transition: all var(--transition-medium);
+}
+
+/* Make placeholder visible */
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.9;
+}
+
+/* When user focuses a field */
+form input:focus,
+form textarea:focus {
+  /* background-color: var(--color-surface) !important; */
+  color: var(--color-text-muted) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(0, 134, 243, 0.25);
+  outline: none;
+
 }

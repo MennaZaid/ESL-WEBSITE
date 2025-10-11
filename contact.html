@@ -47,30 +47,33 @@
 
       <!-- Questions Form -->
       <div class="card mx-auto shadow p-4" style="max-width: 600px; background-color: var(--color-bg); border: none;">
-        <h4 class="mb-3" style="color: var(--color-muted);">Questions?</h4>
-        <form>
+        <h4 class="mb-3" style="color: var(--color-text);">Questions?</h4>
+
+        <form id="questionForm" action="/submit-question" method="POST">
           <div class="mb-3 text-start">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Your name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
           </div>
           <div class="mb-3 text-start">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Your email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your email" required>
           </div>
           <div class="mb-3 text-start">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="phone" placeholder="Your phone number">
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your phone number">
           </div>
           <div class="mb-3 text-start">
             <label for="message" class="form-label">Question / Message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Your question or message..."
-              required></textarea>
+            <textarea class="form-control" id="message" name="message" rows="4"
+              placeholder="Your question or message..." required></textarea>
           </div>
           <button type="submit" class="btn btn-dark w-100"
-            style="background-color: var(--color-surface); color: var(--color-bg);">Send Message</button>
+            style="background-color: var(--color-surface); color: var(--color-bg);">
+            Send Message
+          </button>
         </form>
       </div>
-    </div>
+
   </section>
 
   <script src="script.js"></script>
