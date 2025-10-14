@@ -15,69 +15,6 @@
 
   <!-- Global Styles -->
   <link rel="stylesheet" href="css/global.css" />
-  
-  <!-- FAQ-specific styles -->
-  <style>
-    .faq-section {
-      padding: 80px 0;
-      background-color: var(--color-background);
-    }
-    
-    .faq-title {
-      color: var(--color-primary);
-      margin-bottom: 50px;
-      font-weight: 700;
-    }
-    
-    .faq-item {
-      border: none;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-    
-    .faq-header {
-      background-color: white;
-      border: none;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .faq-header:hover {
-      background-color: #f8f9fa;
-    }
-    
-    .faq-header h3 {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--color-primary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .faq-answer {
-      padding: 20px;
-      background-color: white;
-      border-top: 1px solid #e9ecef;
-    }
-    
-    .faq-icon {
-      transition: transform 0.3s ease;
-      color: var(--color-primary);
-    }
-    
-    .faq-header[aria-expanded="true"] .faq-icon {
-      transform: rotate(180deg);
-    }
-    
-    .back-home {
-      margin-top: 40px;
-    }
-  </style>
 </head>
 
 <body>
@@ -104,90 +41,140 @@
     </nav>
   </header>
 
-  <!-- FAQ Section -->
-  <section class="faq-section">
+  <!-- Header Section -->
+  <section class="start-section text-center">
     <div class="container">
-      <h2 class="text-center faq-title">FAQs</h2>
-      
-      <div class="accordion" id="faqAccordion">
-        <!-- Question 1 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header faq-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              <span>Will there be transportation?</span>
-              <i class="faq-icon bi bi-chevron-down"></i>
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>Yes, students located outside of Cairo will be accommodated with transportation.</p>
+      <h1 class="display-3 fw-bold mb-4">Frequently Asked <span class="highlight">Questions</span></h1>
+      <p class="lead mb-5">Find answers to common questions about the Egyptian Student Leaders Conference</p>
+    </div>
+  </section>
+
+  <!-- FAQ Content Section -->
+  <section class="info-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="accordion" id="faqAccordion">
+            <!-- Question 1 -->
+            <div class="card-custom mb-4 faq-item">
+              <div class="faq-question">
+                <button class="btn btn-link text-start p-4 w-100 text-decoration-none faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <div class="d-flex align-items-center">
+                    <div class="faq-icon-wrapper me-3">
+                      <i class="fas fa-bus"></i>
+                    </div>
+                    <span class="faq-question-text flex-grow-1">Will there be transportation?</span>
+                    <div class="faq-chevron">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div id="collapseOne" class="collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-answer">
+                  <p class="mb-0">Yes, students located outside of Cairo will be accommodated with transportation.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="card-custom mb-4 faq-item">
+              <div class="faq-question">
+                <button class="btn btn-link text-start p-4 w-100 text-decoration-none faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <div class="d-flex align-items-center">
+                    <div class="faq-icon-wrapper me-3">
+                      <i class="fas fa-certificate"></i>
+                    </div>
+                    <span class="faq-question-text flex-grow-1">Will the certificate be hard or soft copy?</span>
+                    <div class="faq-chevron">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div id="collapseTwo" class="collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-answer">
+                  <p class="mb-0">All certificates will be sent as a soft copy through email.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="card-custom mb-4 faq-item">
+              <div class="faq-question">
+                <button class="btn btn-link text-start p-4 w-100 text-decoration-none faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <div class="d-flex align-items-center">
+                    <div class="faq-icon-wrapper me-3">
+                      <i class="fas fa-users"></i>
+                    </div>
+                    <span class="faq-question-text flex-grow-1">Can I join the conference if I am not in the student union or in any association?</span>
+                    <div class="faq-chevron">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div id="collapseThree" class="collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-answer">
+                  <p class="mb-0">Yes, all university students are welcome to join the conference.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="card-custom mb-4 faq-item">
+              <div class="faq-question">
+                <button class="btn btn-link text-start p-4 w-100 text-decoration-none faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <div class="d-flex align-items-center">
+                    <div class="faq-icon-wrapper me-3">
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="faq-question-text flex-grow-1">What will I benefit from this conference?</span>
+                    <div class="faq-chevron">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div id="collapseFour" class="collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-answer">
+                  <p class="mb-0">Students will benefit by gaining practical skills through workshops, receiving guidance from professionals, expanding your network with students from other universities, and earning a certificate from AUC that adds value to your academic and career journey.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="card-custom mb-4 faq-item">
+              <div class="faq-question">
+                <button class="btn btn-link text-start p-4 w-100 text-decoration-none faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <div class="d-flex align-items-center">
+                    <div class="faq-icon-wrapper me-3">
+                      <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <span class="faq-question-text flex-grow-1">Do I have to register for the workshops / talks?</span>
+                    <div class="faq-chevron">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div id="collapseFive" class="collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-answer">
+                  <p class="mb-0">No, you have to register only for the events and throughout the day you can choose the workshops and talks you will attend.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-5">
+            <div class="card-custom">
+              <h3 class="mb-3">Still have questions?</h3>
+              <p class="text-muted mb-4">Can't find the answer you're looking for? Feel free to reach out to us.</p>
+              <a href="contact.html" class="btn btn-primary-custom me-3">Contact Us</a>
+              <a href="index.html" class="btn btn-secondary-custom">Back to Home</a>
             </div>
           </div>
         </div>
-        
-        <!-- Question 2 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header faq-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              <span>Will the certificate be hard or soft copy?</span>
-              <i class="faq-icon bi bi-chevron-down"></i>
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>All certificates will be sent as a soft copy through email.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Question 3 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header faq-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              <span>Can I join the conference if I am not in the student union or in any association?</span>
-              <i class="faq-icon bi bi-chevron-down"></i>
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>Yes, all university students are welcome to join the conference.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Question 4 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header faq-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              <span>What will I benefit from this conference?</span>
-              <i class="faq-icon bi bi-chevron-down"></i>
-            </button>
-          </h2>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>Students will benefit by gaining practical skills through workshops, receiving guidance from professionals, expanding your network with students from other universities, and earning a certificate from AUC that adds value to your academic and career journey.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Question 5 -->
-        <div class="accordion-item faq-item">
-          <h2 class="accordion-header faq-header" id="headingFive">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              <span>Do I have to register for the workshops / talks?</span>
-              <i class="faq-icon bi bi-chevron-down"></i>
-            </button>
-          </h2>
-          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-            <div class="accordion-body faq-answer">
-              <p>No, you have to register only for the events and throughout the day you can choose the workshops and talks you will attend.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center back-home">
-        <a href="index.html" class="btn btn-primary-custom">Back to Home</a>
       </div>
     </div>
   </section>
@@ -195,11 +182,11 @@
   <!-- Footer -->
   <footer class="footer-section text-center">
     <div class="container">
-      <p>© 2025 Egyptian Student Leaders Conference</p>
-      <a href="#" class="scroll-top"><i class="bi bi-arrow-up-circle h1"></i></a>
+      <p>&copy; 2025 Egyptian Student Leaders Conference. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 
