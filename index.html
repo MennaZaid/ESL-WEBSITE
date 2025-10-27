@@ -74,7 +74,7 @@
         </div>
 
         <div class="modal-body">
-          <form id="registrationForm" method="POST" action="/api/register" enctype="multipart/form-data">
+          <form id="registrationForm" enctype="multipart/form-data">
             <div class="row g-3">
 
               <div class="col-md-6">
@@ -164,6 +164,24 @@
                 <label for="nationalID" class="form-label">National ID Number</label>
                 <input type="text" class="form-control" id="nationalID" name="national_id"
                   placeholder="Enter your National ID" required>
+              </div>
+
+              <!-- Transport Section (only for cities outside Cairo/Giza) -->
+              <div id="transportSection" style="display: none;" class="col-12 border-top pt-3 mb-3">
+                <label class="form-label">Do you need transportation?</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="needTransport" id="transportYes" value="yes">
+                  <label class="form-check-label" for="transportYes">Yes</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="needTransport" id="transportNo" value="no">
+                  <label class="form-check-label" for="transportNo">No</label>
+                </div>
+                <div id="transportLocationDiv" style="display: none;" class="mt-3">
+                  <label for="transportLocation" class="form-label">Where do you need transportation from?</label>
+                  <input type="text" class="form-control" id="transportLocation" name="transportFrom"
+                    placeholder="Enter pickup location">
+                </div>
               </div>
 
               <div class="col-md-6">
