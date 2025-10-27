@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
 
-  <!-- Bootstrap (for layout only) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Global Styles -->
   <link rel="stylesheet" href="css/global.css" />
 </head>
 
 <body>
-  <!-- Navbar -->
   <header>
     <nav class="navbar navbar-expand-lg" id="main-nav">
       <div class="container">
@@ -36,18 +33,20 @@
       </div>
     </nav>
   </header>
-
-
   <section class="start-section text-center text-sm-start">
-    <div class="container m-2 p-3">
-      <div class="d-sm-flex align-items-center justify-content-between p-3">
-        <div class="m-2">
-          <h1>WELCOME TO <span class="highlight">ESL 2025</span></h1>
-          <p class="lead my-5">
+    <div class="container py-5">
+      <div class="row align-items-center justify-content-between">
+
+        <!-- Left column: text -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h1 class="fw-bold display-5 mb-4">
+            WELCOME TO <span class="highlight">ESL 2025</span>
+          </h1>
+          <p class="lead mb-5">
             The <strong>Egyptian Student Leaders Conference (ESL)</strong> brings together student
             government/associations leaders from universities across Egypt to learn ideas, build
             leadership capacity, and develop joint initiatives together from experienced individuals.
-            Through talks, collaboration, networking, and policy innovation, ESG aims to strengthen
+            Through talks, collaboration, and networking, ESL aims to strengthen
             student representation, promote cross-campus cooperation, and inspire impactful
             leadership across the country.
           </p>
@@ -55,12 +54,17 @@
             REGISTER NOW
           </button>
         </div>
-        <img class="img-fluid w-50 m-2 d-none d-sm-block" src="images/esl.png" alt="ESL Conference" />
+
+        <!-- Right column: image -->
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+          <img src="css/ELC.png" alt="ESL Conference" class="img-fluid esl-logo" />
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Registration Modal -->
+
   <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content custom-modal">
@@ -70,10 +74,9 @@
         </div>
 
         <div class="modal-body">
-          <form id="registrationForm" method="POST" action="/api/register">
+          <form id="registrationForm" method="POST" action="/api/register" enctype="multipart/form-data">
             <div class="row g-3">
 
-              <!-- First & Last Name -->
               <div class="col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="first_name"
@@ -86,27 +89,23 @@
                   placeholder="Enter your last name" required>
               </div>
 
-              <!-- Age -->
               <div class="col-md-4">
-                <label for="age" class="form-label">Age</label>
-                <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+                <label for="birthDate" class="form-label">Birth Date</label>
+                <input type="date" class="form-control" id="birthDate" name="birth_date" required>
               </div>
 
-              <!-- Email -->
               <div class="col-md-8">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
                   required>
               </div>
 
-              <!-- Phone -->
               <div class="col-md-6">
                 <label for="phone" class="form-label">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"
                   required>
               </div>
 
-              <!-- City Dropdown -->
               <div class="col-md-6">
                 <label for="city" class="form-label">City</label>
                 <select class="form-select text-dark" id="city" name="city" required>
@@ -149,47 +148,55 @@
                 </select>
               </div>
 
-              <!-- University -->
               <div class="col-md-6">
                 <label for="university" class="form-label">University</label>
                 <input type="text" class="form-control" id="university" name="university"
                   placeholder="Your university name" required>
               </div>
 
-              <!-- Organization -->
+              <div class="col-md-6">
+                <label for="studentID" class="form-label">Student ID Number</label>
+                <input type="text" class="form-control" id="studentID" name="student_id"
+                  placeholder="Enter your student ID" required>
+              </div>
+
+              <div class="col-md-6">
+                <label for="nationalID" class="form-label">National ID Number</label>
+                <input type="text" class="form-control" id="nationalID" name="national_id"
+                  placeholder="Enter your National ID" required>
+              </div>
+
               <div class="col-md-6">
                 <label for="organization" class="form-label">Name of Organization</label>
                 <input type="text" class="form-control" id="organization" name="organization"
                   placeholder="Organization name or 'Individual'" required>
               </div>
 
-              <!-- Role -->
               <div class="col-md-6">
                 <label for="role" class="form-label">Role</label>
                 <input type="text" class="form-control" id="role" name="role" placeholder="Enter your role" required>
               </div>
 
-              <!-- Transportation Section (hidden until needed) -->
-              <div id="transportSection" style="display:none;">
-                <div class="col-12 mt-3">
-                  <label class="form-label d-block">Will you be needing transportation?</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="need_transport" id="transportYes" value="yes">
-                    <label class="form-check-label" for="transportYes">Yes</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="need_transport" id="transportNo" value="no">
-                    <label class="form-check-label" for="transportNo">No</label>
-                  </div>
-                </div>
-
-                <div class="col-12 mt-3" id="transportLocationDiv" style="display:none;">
-                  <label for="transportLocation" class="form-label">From where will you be needing
-                    transportation?</label>
-                  <input type="text" class="form-control" id="transportLocation" name="transport_from"
-                    placeholder="Enter location">
-                </div>
+              <div class="col-md-6">
+                <label for="photoUpload" class="form-label">Upload Personal Photo</label>
+                <input type="file" class="form-control" id="photoUpload" name="personal_photo" required
+                  accept="image/*">
               </div>
+
+              <div class="col-md-6">
+                <label for="nationalIDPicture" class="form-label">Upload National ID Picture</label>
+                <input type="file" class="form-control" id="nationalIDPicture" name="national_id_picture" required
+                  accept="image/*">
+              </div>
+
+              <div class="col-12">
+                <label for="medicalNotes" class="form-label">Dietary Restrictions / Medical Conditions
+                  (Optional)</label>
+                <textarea class="form-control" id="medicalNotes" name="medical_notes" rows="2"
+                  placeholder="E.g., Vegetarian, Peanut Allergy, Requires wheelchair access."></textarea>
+              </div>
+
+
             </div>
 
             <div class="mt-4">
@@ -200,7 +207,6 @@
       </div>
     </div>
   </div>
-
 
 
   <section class="info-section">
@@ -219,7 +225,7 @@
           <div class="card-custom">
             <div class="card-body">
               <h3 class="card-title mb-3">Leadership Skills</h3>
-              <p>Develop your leadership and teamwork abilities through interactive workshops.</p>
+              <p>Develop your leadership and teamwork abilities through interactive workshop sessions.</p>
             </div>
           </div>
         </div>
@@ -227,7 +233,7 @@
           <div class="card-custom">
             <div class="card-body">
               <h3 class="card-title mb-3">Recognition</h3>
-              <p>Receive official certificates signed by guest speakers upon completing the conference.</p>
+              <p>Get an official certificate upon completing the conference.</p>
             </div>
           </div>
         </div>
@@ -235,7 +241,6 @@
     </div>
   </section>
 
-  <!-- About ESL -->
   <section class="event-section">
     <div class="container">
       <div class="row align-items-center justify-content-between">
@@ -243,37 +248,72 @@
           <h2>About ESL 2025</h2>
           <p class="lead">
             ESL 2025 will take place on <strong>November 21st, 2025</strong> at the
-            <em>American University in Cairo</em>. Join hundreds of student leaders and changemakers for a day of
+            <span class="highlight"> The American University in Cairo New Cairo campus</span>. Join hundreds of student
+            leaders and changemakers for a
+            day of
             collaboration, workshops, and impactful sessions.
           </p>
           <a href="contact.html" class="btn btn-secondary-custom mt-3">Contact Organizers</a>
         </div>
         <div class="col-md">
-          <img src="images/esl_event.png" alt="Conference" class="img-fluid rounded-3 shadow-lg" />
+          <img src="css/ELC.png" alt="Conference" class="img-fluid " />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Info -->
-  <section class="contact-section" id="contact">
-    <div class="container text-center text-dark">
-      <h2 class="section-title">Contact Information</h2>
-      <ul class="list-unstyled">
-        <li><strong>Emails:</strong> alyaaeldeeb@aucegypt.edu / mahmoudkhedr@aucegypt.edu</li>
-        <li><strong>Phone Numbers:</strong> 01200300325 / 01200766680</li>
-        <li><strong>Instagram:</strong> <a href="https://instagram.com/auc.su" target="_blank">@auc.su</a></li>
+  <section class="info-section py-5">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md p-5">
+          <h2 class="text-center text-md-start">Organized by the <span class="highlight">AUC Student Union</span></h2>
+          <p class="lead">
+            The AUC Student Union (SU) is the highest representative body of the student community at the American
+            University in Cairo. Serving as the primary bridge between students and administration, the SU strives to
+            ensure that the voices, needs, and aspirations of the student body are heard and addressed. Rooted in the
+            values of leadership, service, and inclusivity, the Student Union works to enhance the overall university
+            experience by advocating for student rights, organizing impactful initiatives, and fostering a vibrant
+            campus
+            culture.
+          </p>
+          <p class="lead">
+            Beyond representation, the SU plays a central role in shaping student life at AUC through a variety of
+            academic, social, and developmental programs. By empowering students to engage in governance, dialogue, and
+            creative expression, the AUC Student Union continues to uphold its mission of cultivating a dynamic and
+            unified community that reflects the diverse spirit of AUC.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section py-5" id="contact">
+    <div class="container text-center text-white">
+      <h2 class="section-title mb-4">Contact Information</h2>
+      <ul class="list-unstyled fs-5">
+        <li class="mb-2">
+          <strong>Email:</strong>
+          <a href="mailto:su-pr@aucegypt.edu" class="highlight text-decoration-none">su-pr@aucegypt.edu</a>
+        </li>
+        <li>
+          <strong>Instagram:</strong>
+          <a href="https://instagram.com/auc.su" target="_blank" class="highlight text-decoration-none">@auc.su</a>
+        </li>
       </ul>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer-section text-center">
+  <footer class="footer-section text-center py-4">
     <div class="container">
-      <p>© 2025 Egyptian Student Leaders Conference</p>
-      <a href="#" class="scroll-top"><i class="bi bi-arrow-up-circle h1"></i></a>
+      <p class="mb-2">© 2025 Egyptian Student Leaders Conference</p>
+      <a href="#top" class="scroll-top d-inline-block">
+        <i class="bi bi-arrow-up-circle-fill"></i>
+      </a>
     </div>
   </footer>
+
 
   <script src="script.js"></script>
 </body>

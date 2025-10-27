@@ -1,19 +1,19 @@
 :root {
-  /* Primary Colors */
-  --color-primary: #cccccc;
-  --color-secondary: #999999;
-  --color-accent: #dddddd;
+  /* Primary Colors - Based on palette */
+  --color-primary: #C5A73C;
+  --color-secondary: #004C8F;
+  --color-accent: #5FCDDA;
 
   /* Background Colors */
-  --color-bg: #eff1f7;
-  --color-surface: #000000;
+  --color-bg: #F5F5F0;
+  --color-surface: #004C8F;
 
   /* Text Colors */
-  --color-text: #fbf5f5;
-  --color-text-muted: #0086f3;
+  --color-text: #FFFFFF;
+  --color-text-muted: #C5A73C;
 
   /* Border Colors */
-  --color-border: #e0e0e0;
+  --color-border: #5FCDDA;
 
   /* New variables for smoothness */
   --transition-fast: 0.2s ease;
@@ -30,17 +30,16 @@ input[type="email"],
 input[type="tel"],
 textarea {
   background-color: var(--color-bg);
-  color: var(--color-text-muted);
+  color: var(--color-secondary);
   border-radius: var(--border-radius);
   padding: 0.6rem 0.75rem;
   transition: all var(--transition-medium);
-  text-decoration: var(--color-text-muted);
 }
 
 /* Placeholder text color */
 input::placeholder,
 textarea::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   opacity: 0.8;
 }
 
@@ -49,9 +48,9 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(0, 134, 243, 0.3);
+  box-shadow: 0 0 0 2px rgba(95, 205, 218, 0.3);
   background-color: var(--color-surface);
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 /* Smooth scrolling */
@@ -71,7 +70,7 @@ body {
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-secondary);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -102,7 +101,7 @@ body {
 }
 
 .navbar-brand:hover {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   transform: translateY(-1px);
 }
 
@@ -123,10 +122,10 @@ body {
 .nav-link:hover,
 .nav-link.active,
 .nav-link:active {
-  color: var(--color-accent);
+  color: var(--color-surface);
   /* text color when active */
-  background-color: #0086f3;
-  /* soft blue tint */
+  background-color: var(--color-primary);
+  /* gold background */
   transform: translateY(-1px);
 }
 
@@ -161,7 +160,7 @@ body {
 }
 
 .navbar-toggler:focus {
-  box-shadow: 0 0 0 2px var(--color-text-muted);
+  box-shadow: 0 0 0 2px var(--color-primary);
 }
 
 /* Section Improvements */
@@ -181,13 +180,58 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-text-muted), transparent);
+  background: linear-gradient(90deg, var(--color-primary), transparent);
 }
 
-.info-section,
-.contact-section {
+.start-section {
+  background-color: #004b87;
+  /* deep blue background (adjust as needed) */
+  color: white;
+  min-height: 90vh;
+  /* gives the section breathing space */
+  display: flex;
+  align-items: center;
+}
+
+.highlight {
+  color: #d6b34a;
+  /* gold accent */
+}
+
+.esl-logo {
+  max-height: 340px;
+  /* make the image bigger */
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.btn-primary-custom {
+  background: linear-gradient(90deg, #d6b34a, #a1c4d9);
+  border: none;
+  color: #003366;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+  background: linear-gradient(90deg, #a1c4d9, #d6b34a);
+  transform: scale(1.05);
+}
+
+
+.info-section {
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-secondary);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.contact-section {
+  background-color: var(--color-surface);
+  color: var(--color-secondary);
   padding: 5rem 0;
   position: relative;
 }
@@ -214,14 +258,14 @@ body {
   left: 0;
   width: 60px;
   height: 4px;
-  background: var(--color-text-muted);
+  background: var(--color-primary);
   border-radius: 2px;
 }
 
 /* Typography Improvements */
 .highlight {
-  color: var(--color-text-muted);
-  background: linear-gradient(135deg, var(--color-text-muted), #00a8ff);
+  color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -236,8 +280,8 @@ body {
 
 /* Button Improvements */
 .btn-primary-custom {
-  background: linear-gradient(135deg, var(--color-text-muted), #00a8ff);
-  color: white;
+  background: linear-gradient(135deg, var(--color-primary), #D4B645);
+  color: var(--color-surface);
   border: none;
   padding: 1rem 2rem;
   border-radius: var(--border-radius);
@@ -251,7 +295,7 @@ body {
 .btn-primary-custom:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-medium);
-  color: white;
+  color: var(--color-surface);
 }
 
 .btn-primary-custom::before {
@@ -271,8 +315,8 @@ body {
 
 .btn-secondary-custom {
   background-color: transparent;
-  border: 2px solid var(--color-text);
-  color: var(--color-text);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
   padding: 0.875rem 1.75rem;
   border-radius: var(--border-radius);
   transition: all var(--transition-medium);
@@ -280,7 +324,7 @@ body {
 }
 
 .btn-secondary-custom:hover {
-  background-color: var(--color-text);
+  background-color: var(--color-primary);
   color: var(--color-surface);
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
@@ -307,7 +351,7 @@ body {
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--color-text-muted);
+  background: var(--color-primary);
   transform: scaleY(0);
   transition: transform var(--transition-medium);
 }
@@ -322,7 +366,7 @@ body {
 }
 
 .card-title {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   font-weight: 700;
   margin-bottom: 1rem;
 }
@@ -331,7 +375,7 @@ body {
 .form-control,
 .form-select {
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-secondary);
   border: 2px solid var(--color-border);
   border-radius: var(--border-radius);
   padding: 0.75rem 1rem;
@@ -340,16 +384,16 @@ body {
 }
 
 .form-control::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   opacity: 0.7;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: var(--color-text-muted);
-  box-shadow: 0 0 0 3px rgba(0, 134, 243, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(197, 167, 60, 0.1);
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-secondary);
 }
 
 /* Modal Improvements */
@@ -388,8 +432,8 @@ body {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  color: var(--color-text);
-  background: var(--color-surface);
+  color: var(--color-surface);
+  background: var(--color-primary);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -411,7 +455,7 @@ body {
 
 .scroll-top:hover {
   transform: translateY(-3px);
-  color: var(--color-text-muted);
+  background-color: var(--color-accent);
 }
 
 /* Loading animations */
@@ -462,22 +506,22 @@ body {
 
 /* Focus improvements for accessibility */
 *:focus {
-  outline: 2px solid var(--color-text-muted);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 /* Selection color */
 ::selection {
-  background-color: var(--color-text-muted);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 /* Force visible text and consistent colors in form fields */
 form input,
 form textarea {
   background-color: var(--color-bg) !important;
-  color: var(--color-text) !important;
-  border: 1px solid var(--color-text-muted) !important;
+  color: var(--color-secondary) !important;
+  border: 1px solid var(--color-primary) !important;
   border-radius: var(--border-radius);
   padding: 0.6rem 0.75rem;
   transition: all var(--transition-medium);
@@ -486,7 +530,7 @@ form textarea {
 /* Make placeholder visible */
 form input::placeholder,
 form textarea::placeholder {
-  color: var(--color-text-muted) !important;
+  color: var(--color-primary) !important;
   opacity: 0.9;
 }
 
@@ -494,9 +538,8 @@ form textarea::placeholder {
 form input:focus,
 form textarea:focus {
   /* background-color: var(--color-surface) !important; */
-  color: var(--color-text-muted) !important;
+  color: var(--color-secondary) !important;
   border-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 3px rgba(0, 134, 243, 0.25);
+  box-shadow: 0 0 0 3px rgba(95, 205, 218, 0.25);
   outline: none;
-
 }
