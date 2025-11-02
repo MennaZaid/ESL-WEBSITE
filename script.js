@@ -1,5 +1,5 @@
-// API Base URL - Change this to match your backend URL
-const API_BASE_URL = 'https://api.aucsu.org';
+// API Base URL 
+const API_BASE_URL = 'http://localhost:5001';
 
 // Toast notification function
 function showToast(type, message) {
