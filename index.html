@@ -50,8 +50,8 @@
             student representation, promote cross-campus cooperation, and inspire impactful
             leadership across the country.
           </p>
-          <button class="btn btn-primary-custom btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal">
-            REGISTER NOW
+          <button class="btn btn-primary-custom btn-lg" id="registerButton" data-bs-toggle="modal" data-bs-target="#registrationClosedModal">
+            REGISTRATION CLOSED
           </button>
         </div>
 
@@ -64,6 +64,32 @@
     </div>
   </section>
 
+
+  <!-- Registration Closed Modal -->
+  <div class="modal fade" id="registrationClosedModal" tabindex="-1" aria-labelledby="registrationClosedModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registrationClosedModalLabel">Registration Closed</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center py-4">
+          <div class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-x-circle text-danger" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </div>
+          <h4 class="mb-3">Registration is Currently Closed</h4>
+          <p class="lead">We're sorry, but registration for ESL 2025 is now closed. Thank you for your interest!</p>
+          <p>If you have any questions, please feel free to <a href="contact.html">contact us</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
