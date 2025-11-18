@@ -627,8 +627,7 @@
         async function checkIn(type) {
             if (!currentParticipant) return;
 
-            const checkedBy = prompt('Enter your name (who is checking in):');
-            if (!checkedBy) return;
+            const checkedBy = 'Admin';
 
             try {
                 const response = await fetch(`${API_BASE_URL}/checkin/${type}/${currentParticipant.qr_code}`, {
@@ -672,8 +671,7 @@
                 return;
             }
 
-            const checkedBy = prompt('Enter your name (who is checking in):');
-            if (!checkedBy) return;
+            const checkedBy = 'Admin';
 
             try {
                 const response = await fetch(`${API_BASE_URL}/checkin/workshop/${currentParticipant.qr_code}`, {
