@@ -90,6 +90,13 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            align-items: stretch;
+        }
+
+        .search-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: stretch;
         }
 
         .search-input {
@@ -387,6 +394,17 @@
             .search-input-container {
                 flex-direction: column;
                 gap: 10px;
+                align-items: stretch;
+            }
+
+            .search-buttons {
+                flex-direction: row;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .search-buttons .btn {
+                flex: 1;
             }
 
             .search-input {
@@ -581,9 +599,10 @@
             <div class="search-input-container">
                 <input type="text" class="search-input" id="searchInput"
                     placeholder="Enter QR Code or Registration Number (e.g., ESL-2025-0001)" autocomplete="off">
-                <button class="btn btn-primary" onclick="lookupParticipant()">Search</button>
-                <button class="btn btn-success" onclick="startQRScanner()" style="margin-left: 10px;">📷 Scan
-                    QR</button>
+                <div class="search-buttons">
+                    <button class="btn btn-primary" onclick="lookupParticipant()">Search</button>
+                    <button class="btn btn-success" onclick="startQRScanner()">📷 Scan QR</button>
+                </div>
             </div>
 
             <!-- QR Scanner Video Element (hidden by default) -->
