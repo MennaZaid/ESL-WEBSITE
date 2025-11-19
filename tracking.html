@@ -338,12 +338,213 @@
         }
 
         @media (max-width: 768px) {
-            .checkin-buttons {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-card h3 {
+                font-size: 11px;
+            }
+
+            .stat-card .number {
+                font-size: 28px;
+            }
+
+            .search-section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+
+            .search-section h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .search-input-container {
                 flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-input {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
             }
 
             .btn {
                 width: 100%;
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+
+            .result-section {
+                padding: 20px 15px;
+            }
+
+            .participant-info {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .participant-info h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .info-item {
+                padding: 12px;
+            }
+
+            .info-item label {
+                font-size: 11px;
+            }
+
+            .info-item .value {
+                font-size: 15px;
+            }
+
+            .checkin-section h4 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .checkin-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .workshop-section h4 {
+                font-size: 18px;
+            }
+
+            .workshop-form {
+                padding: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            .form-select {
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            .workshop-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .workshop-item strong {
+                font-size: 15px;
+            }
+
+            .workshop-item div {
+                font-size: 13px !important;
+            }
+
+            .alert {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            #qrScannerContainer > div {
+                max-width: 100% !important;
+            }
+        }
+
+        /* Additional mobile optimizations for smaller screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .header {
+                padding: 15px 12px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header p {
+                font-size: 13px;
+            }
+
+            .stats-container {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 12px 10px;
+            }
+
+            .stat-card h3 {
+                font-size: 10px;
+            }
+
+            .stat-card .number {
+                font-size: 24px;
+            }
+
+            .search-section,
+            .result-section {
+                padding: 15px 12px;
+            }
+
+            .search-section h2 {
+                font-size: 18px;
+            }
+
+            .btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Landscape mobile orientation */
+        @media (max-width: 896px) and (orientation: landscape) {
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
