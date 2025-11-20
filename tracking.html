@@ -501,7 +501,7 @@
                 font-size: 14px;
             }
 
-            #qrScannerContainer > div {
+            #qrScannerContainer>div {
                 max-width: 100% !important;
             }
         }
@@ -672,22 +672,23 @@
                         <label for="workshopName">Workshop Name</label>
                         <select class="form-select" id="workshopName">
                             <option value="">Select Workshop</option>
-                            <option value="Navigating Conflicts: Turning Tension into Team Growth">Navigating Conflicts: Turning Tension into Team Growth</option>
-                            <option value="Designing Impactful Community Projects: From Idea to Action">Designing Impactful Community Projects: From Idea to Action</option>
-                            <option value="Lead the Clock: Managing Projects with Precision and Purpose">Lead the Clock: Managing Projects with Precision and Purpose</option>
-                            <option value="Beyond the Year: Sustaining Clubs and Creating Legacy">Beyond the Year: Sustaining Clubs and Creating Legacy</option>
-                            <option value="From Groups to Teams: Building Cooperation and Purpose">From Groups to Teams: Building Cooperation and Purpose</option>
-                            <option value="From Student to Student: Your Path to Leadership Development">From Student to Student: Your Path to Leadership Development</option>
-                            <option value="Mindful Leadership: Managing Stress and Building Emotionally Intelligent Teams">Mindful Leadership: Managing Stress and Building Emotionally Intelligent Teams</option>
-                            <option value="Brand Yourself: Crafting a Leadership Identity for the Future">Brand Yourself: Crafting a Leadership Identity for the Future</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="workshopSession">Session</label>
-                        <select class="form-select" id="workshopSession">
-                            <option value="">Select Session</option>
-                            <option value="Lead">Workshops – Lead</option>
-                            <option value="Develop">Workshops – Develop</option>
+                            <option value="Navigating Conflicts: Turning Tension into Team Growth">Navigating Conflicts:
+                                Turning Tension into Team Growth</option>
+                            <option value="Designing Impactful Community Projects: From Idea to Action">Designing
+                                Impactful Community Projects: From Idea to Action</option>
+                            <option value="Lead the Clock: Managing Projects with Precision and Purpose">Lead the Clock:
+                                Managing Projects with Precision and Purpose</option>
+                            <option value="Beyond the Year: Sustaining Clubs and Creating Legacy">Beyond the Year:
+                                Sustaining Clubs and Creating Legacy</option>
+                            <option value="From Groups to Teams: Building Cooperation and Purpose">From Groups to Teams:
+                                Building Cooperation and Purpose</option>
+                            <option value="From Student to Student: Your Path to Leadership Development">From Student to
+                                Student: Your Path to Leadership Development</option>
+                            <option
+                                value="Mindful Leadership: Managing Stress and Building Emotionally Intelligent Teams">
+                                Mindful Leadership: Managing Stress and Building Emotionally Intelligent Teams</option>
+                            <option value="Brand Yourself: Crafting a Leadership Identity for the Future">Brand
+                                Yourself: Crafting a Leadership Identity for the Future</option>
                         </select>
                     </div>
                     <button class="btn btn-primary" onclick="checkInWorkshop()">Add Workshop Attendance</button>
@@ -880,15 +881,8 @@
             if (!currentParticipant) return;
 
             const workshopName = document.getElementById('workshopName').value;
-            const workshopSession = document.getElementById('workshopSession').value;
-
             if (!workshopName) {
                 showAlert('Please select a workshop', 'warning');
-                return;
-            }
-
-            if (!workshopSession) {
-                showAlert('Please select a session', 'warning');
                 return;
             }
 
@@ -903,7 +897,6 @@
                     },
                     body: JSON.stringify({
                         workshop_name: workshopName,
-                        workshop_session: workshopSession,
                         checked_by: checkedBy
                     })
                 });
@@ -914,7 +907,6 @@
                     showAlert(result.message, 'success');
                     // Reset form
                     document.getElementById('workshopName').value = '';
-                    document.getElementById('workshopSession').value = '';
                     // Refresh participant data and stats
                     await lookupParticipant();
                     await loadStats();
