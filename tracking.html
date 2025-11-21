@@ -172,6 +172,127 @@
             display: block;
         }
 
+        .live-tracking-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .live-tracking-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .live-tracking-header h2 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .live-meta {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-buttons .btn {
+            padding: 10px 18px;
+            font-size: 14px;
+        }
+
+        .filter-buttons .btn.active {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .live-table-wrapper {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .live-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .live-table thead {
+            background: #f5f7fb;
+        }
+
+        .live-table th,
+        .live-table td {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .live-table tbody tr:nth-child(even) {
+            background: #fff;
+        }
+
+        .live-table tbody tr:nth-child(odd) {
+            background: #fafbff;
+        }
+
+        .live-table tbody tr.highlight {
+            border-left: 4px solid #667eea;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pill.success {
+            background: #e3fcec;
+            color: #217a41;
+        }
+
+        .status-pill.warning {
+            background: #fff5e6;
+            color: #a15b00;
+        }
+
+        .status-pill.neutral {
+            background: #e9edfb;
+            color: #3d4aa8;
+        }
+
+        .table-scroll {
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .live-empty-state {
+            padding: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 15px;
+        }
+
+        .status-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
         .participant-info {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 25px;
@@ -501,6 +622,29 @@
                 font-size: 14px;
             }
 
+            .live-tracking-section {
+                padding: 20px 15px;
+            }
+
+            .filter-buttons {
+                width: 100%;
+            }
+
+            .filter-buttons .btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .live-table th,
+            .live-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .table-scroll {
+                max-height: 260px;
+            }
+
             #qrScannerContainer>div {
                 max-width: 100% !important;
             }
@@ -591,6 +735,49 @@
             <div class="stat-card">
                 <h3>Lunch</h3>
                 <div class="number" id="lunch">0</div>
+            </div>
+        </div>
+
+        <div class="live-tracking-section">
+            <div class="live-tracking-header">
+                <div>
+                    <h2>📡 Live Attendance Feed</h2>
+                    <div class="live-meta" id="liveMetaText">Auto-refreshes every 30 seconds</div>
+                </div>
+                <div>
+                    <div class="filter-buttons">
+                        <button class="btn btn-primary active" id="filterAll"
+                            onclick="setLiveFilter('all')">All</button>
+                        <button class="btn btn-success" id="filterChecked" onclick="setLiveFilter('checked')">Checked
+                            In</button>
+                        <button class="btn btn-warning" id="filterPending" onclick="setLiveFilter('pending')">Not
+                            Checked
+                            In</button>
+                    </div>
+                    <div class="live-meta" style="text-align: right; margin-top: 8px;">
+                        Last updated: <span id="liveUpdatedAt">--</span>
+                    </div>
+                </div>
+            </div>
+            <div class="live-table-wrapper">
+                <div class="table-scroll">
+                    <table class="live-table">
+                        <thead>
+                            <tr>
+                                <th>Registration #</th>
+                                <th>Name</th>
+                                <th>University</th>
+                                <th>Status</th>
+                                <th>Checked In At</th>
+                            </tr>
+                        </thead>
+                        <tbody id="liveTrackingTableBody">
+                            <tr>
+                                <td colspan="5" class="live-empty-state">Loading live data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -710,10 +897,14 @@
         let currentParticipant = null;
         let authToken = localStorage.getItem('authToken'); // Assuming token is stored in localStorage
         let html5QrCode = null;
+        let liveTrackingData = [];
+        let liveTrackingFilter = 'all';
+        let liveRefreshInterval = null;
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function () {
             loadStats();
+            loadLiveTrackingData();
 
             // Allow Enter key to search
             document.getElementById('searchInput').addEventListener('keypress', function (e) {
@@ -721,6 +912,17 @@
                     lookupParticipant();
                 }
             });
+
+            liveRefreshInterval = setInterval(() => {
+                loadStats();
+                loadLiveTrackingData(false);
+            }, 30000);
+        });
+
+        window.addEventListener('beforeunload', function () {
+            if (liveRefreshInterval) {
+                clearInterval(liveRefreshInterval);
+            }
         });
 
         // Load statistics
@@ -744,6 +946,136 @@
                 }
             } catch (error) {
                 console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadLiveTrackingData(showLoader = true) {
+            const tableBody = document.getElementById('liveTrackingTableBody');
+            if (!tableBody) return;
+
+            if (showLoader) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="live-empty-state">Loading live data...</td>
+                    </tr>
+                `;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/all`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Unable to load live tracking feed');
+                }
+
+                const result = await response.json();
+                liveTrackingData = (result.data || []).sort((a, b) =>
+                    (a.registration_number || '').localeCompare(b.registration_number || '')
+                );
+
+                renderLiveTrackingTable();
+                document.getElementById('liveUpdatedAt').textContent = new Date().toLocaleTimeString();
+            } catch (error) {
+                console.error('Error loading live tracking data:', error);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="live-empty-state">
+                            Unable to load live feed. ${error.message}
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function renderLiveTrackingTable() {
+            const tableBody = document.getElementById('liveTrackingTableBody');
+            if (!tableBody) return;
+
+            let filtered = liveTrackingData;
+            if (liveTrackingFilter === 'checked') {
+                filtered = liveTrackingData.filter(item => item.registration_checked_in);
+            } else if (liveTrackingFilter === 'pending') {
+                filtered = liveTrackingData.filter(item => !item.registration_checked_in);
+            }
+
+            if (!filtered.length) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="live-empty-state">No participants match this filter.</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tableBody.innerHTML = filtered.map(reg => `
+                <tr class="${reg.registration_checked_in ? 'highlight' : ''}">
+                    <td>${reg.registration_number || 'N/A'}</td>
+                    <td>${reg.first_name || ''} ${reg.last_name || ''}</td>
+                    <td>${reg.university || '—'}</td>
+                    <td>
+                        <div class="status-stack">
+                            ${registrationStatusPill(reg.registration_checked_in)}
+                            ${mealStatusPill('Breakfast', reg.breakfast_checked_in)}
+                            ${mealStatusPill('Lunch', reg.lunch_checked_in)}
+                        </div>
+                    </td>
+                    <td>${formatTimestamp(reg.registration_checked_in_at)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function setLiveFilter(filter) {
+            liveTrackingFilter = filter;
+
+            const filterButtons = {
+                all: document.getElementById('filterAll'),
+                checked: document.getElementById('filterChecked'),
+                pending: document.getElementById('filterPending')
+            };
+
+            Object.values(filterButtons).forEach(btn => btn.classList.remove('active'));
+            if (filterButtons[filter]) {
+                filterButtons[filter].classList.add('active');
+            }
+
+            renderLiveTrackingTable();
+        }
+
+        function registrationStatusPill(isCheckedIn) {
+            if (isCheckedIn) {
+                return `<span class="status-pill success">✓ Registration</span>`;
+            }
+            return `<span class="status-pill warning">Pending</span>`;
+        }
+
+        function mealStatusPill(label, isCheckedIn) {
+            const statusClass = isCheckedIn ? 'success' : 'neutral';
+            const icon = isCheckedIn ? '✓ ' : '';
+            return `<span class="status-pill ${statusClass}">${icon}${label}</span>`;
+        }
+
+        function formatTimestamp(timestamp) {
+            if (!timestamp) {
+                return '—';
+            }
+
+            try {
+                const date = new Date(timestamp);
+                if (isNaN(date.getTime())) {
+                    return timestamp;
+                }
+
+                return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })}`;
+            } catch (error) {
+                return timestamp;
             }
         }
 
